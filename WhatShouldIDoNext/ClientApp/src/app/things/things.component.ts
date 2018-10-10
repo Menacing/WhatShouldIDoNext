@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { thing } from '../thing';
-import { THINGS } from '../mockthings';
+import { ThingService } from '../thing.service';
+
 
 @Component({
     selector: 'app-things',
@@ -10,11 +11,11 @@ import { THINGS } from '../mockthings';
 /** thing component*/
 export class ThingsComponent implements OnInit{
     /** thing ctor */
-    constructor() {
+    constructor(private thingService: ThingService) {
 
   }
 
-  things = THINGS;
+  things: thing[];
 
   selectedThing: thing;
 
@@ -22,7 +23,12 @@ export class ThingsComponent implements OnInit{
     this.selectedThing = thing;
   }
 
+  getThings(): void {
+    this.thingService.getThings().subscribe(things  => this.things = things);
+  }
+
   ngOnInit() {
+    this.getThings();
     //pull saved things out of client memory
   }
 }
