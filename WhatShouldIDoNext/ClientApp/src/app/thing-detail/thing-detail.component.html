@@ -1,0 +1,17 @@
+<div *ngIf="thing">
+
+  <h2>{{thing.title | uppercase}}</h2>
+  <div>
+    <label>
+      SELECTED THING:
+      <input [(ngModel)]="thing.title" placeholder="thing" />
+    </label>
+  </div>
+  <div>
+    <span>id: </span>{{thing.id}}
+  </div>
+  <div>
+    <span>Time To Do: </span><input [(ngModel)]="thing.timeToDo" placeholder="0" />h
+  </div>
+
+</div>
